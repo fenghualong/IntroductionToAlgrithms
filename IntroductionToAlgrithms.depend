@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1504255947 source:f:\c_and_pointer\introductiontoalgrithms\main.c
+	<stdio.h>
+	<stdlib.h>
+	"sort.h"
+
+1504248954 f:\c_and_pointer\introductiontoalgrithms\sort.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1504171098 f:\c_and_pointer\introductiontoalgrithms\constant_value.h
+
+1504248954 source:f:\c_and_pointer\introductiontoalgrithms\sort.c
+	"sort.h"
+
