@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1504255947 source:f:\c_and_pointer\introductiontoalgrithms\main.c
+1504265878 source:f:\c_and_pointer\introductiontoalgrithms\main.c
 	<stdio.h>
 	<stdlib.h>
-	"sort.h"
+	"DivideAndConquer.h"
 
 1504248954 f:\c_and_pointer\introductiontoalgrithms\sort.h
 	<stdio.h>
@@ -13,4 +13,9 @@
 
 1504248954 source:f:\c_and_pointer\introductiontoalgrithms\sort.c
 	"sort.h"
+
+1504266064 source:f:\c_and_pointer\introductiontoalgrithms\divideandconquer.c
+	"DivideAndConquer.h"
+
+1504261291 f:\c_and_pointer\introductiontoalgrithms\divideandconquer.h
 
