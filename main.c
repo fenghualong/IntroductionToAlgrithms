@@ -1,29 +1,36 @@
 #include<stdio.h>
 #include<stdlib.h>
+
 #include"DivideAndConquer.h"
 
-#define N 16
+#define N 4
+
 int main()
 {
-    ThreeNumber value;
-    int A[16]={13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7};
-    value = find_maximum_subarray(A, 0, 15);
-    printf("A[%d:%d]=%d\n",value.left,value.right,value.sum);
+    int A[16] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6};
+    int B[16] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6};
+    int C[16];
 
-    int i,j,k;
-    int tem=0;
-    int total=0;
+    square_matrix_multiply(A, B, C, N);
 
-    for(i=0;i<N;i++){//从第一个数到最后一个数
-        for(j=1;j<=N-i;j++){//j表示j个数相加
-            for(k=0;k<j;k++){//实现从第i个数到第i+j个数的连续相加
-                tem+=A[i+k];
-            }
-            if(tem>total)total=tem;
-            tem=0;
-        }
-    }
-    printf("%d\n",total);
+    show(A, N);
+    printf("\n");
+    show(B, N);
+    printf("\n");
+    show(C, N);
+    printf("\n");
+
+    int D[16]={0};
+    square_matrix_multiply_recursive(A, B, D, N);
+
+    show(A, N);
+    printf("\n");
+    show(B, N);
+    printf("\n");
+    show(D, N);
+    printf("\n");
 
     return 0;
 }
+
+
