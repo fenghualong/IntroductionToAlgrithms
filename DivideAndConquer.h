@@ -47,10 +47,21 @@ void matrix_minus(int *A, int *B, int *C, int n);
 /** \brief Strassen算法
  *
  * \param C = A * B,矩阵相乘
- * \param n为阶数
+ * \param n为阶数,n必须为2的幂数。
  * \return
  *
  */
 void square_matrix_multiply_recursive(int *A, int *B, int *C, int n);
+
+/********************************************//**
+ * \brief 用于该int型的二进制表现形式
+ *
+ * \param @number 需要显示的int型数
+ * \param @sum_bit 需要显示的位数
+ * \return
+ *
+ ***********************************************/
+void show_bit(int number, int sum_bit);
+
 
 #endif // __DIVIDE_AND_CONQUER_H__

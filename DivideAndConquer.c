@@ -85,7 +85,8 @@ void show(int *A, int n)
     }
 }
 
-void square_matrix_multiply(int *A, int *B, int *C, int n)//常规算法
+/**< 矩阵相乘的常规算法 */
+void square_matrix_multiply(int *A, int *B, int *C, int n)
 {
     int i,j,k;
     for(i = 0; i < n; i++)
@@ -104,12 +105,6 @@ void square_matrix_multiply(int *A, int *B, int *C, int n)//常规算法
 void square_matrix_multiply_recursive(int *A, int *B, int *C, int n)
 {
     //其中n为阶数；
-    //show(A, n);
-    //printf("\n");
-    //show(B, n);
-    //printf("\n");
-
-
     if(n == 1)
     {
         *C = *A * *B;
@@ -193,6 +188,7 @@ void square_matrix_multiply_recursive(int *A, int *B, int *C, int n)
 
 }
 
+/**< 将一个2n*2n的矩阵分解成四个n*n的矩阵 */
 void matrix_divide(int *A, int *A11, int *A12, int *A21, int *A22,int n)
 {
     int i,j,k,l;
@@ -239,6 +235,7 @@ void matrix_divide(int *A, int *A11, int *A12, int *A21, int *A22,int n)
 
 }
 
+/**< 将四个n*n的矩阵合并成一个2n*2n的矩阵 */
 void matrix_merge(int *A, int *A11, int *A12, int *A21, int *A22,int n)
 {
     int i,j,k,l;
@@ -285,6 +282,7 @@ void matrix_merge(int *A, int *A11, int *A12, int *A21, int *A22,int n)
 
 }
 
+/**< n阶矩阵相加 C=A+B */
 void matrix_add(int *A, int *B, int *C, int n)
 {
     int sum = n*n;;
@@ -294,6 +292,7 @@ void matrix_add(int *A, int *B, int *C, int n)
     }
 }
 
+/**< n阶矩阵相减 C=A-B */
 void matrix_minus(int *A, int *B, int *C, int n)
 {
     int sum = n*n;;
@@ -301,4 +300,23 @@ void matrix_minus(int *A, int *B, int *C, int n)
     {
         *C++ = *A++ - *B++;
     }
+}
+
+/********************************************//**
+ * \brief 用于该int型的二进制表现形式
+ *
+ * \param int number 需要显示的int型数
+ * \param int sum_bit 需要显示的位数
+ * \return
+ *
+ ***********************************************/
+void show_bit(int number, int sum_bit)
+{
+    int num;
+    if(sum_bit-- != 1)
+    {
+        num = number >> 1;
+        show_bit(num,sum_bit);
+    }
+    printf("%d",number&0x1);
 }

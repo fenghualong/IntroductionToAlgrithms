@@ -1,4 +1,7 @@
 #include"sort.h"
+
+static void merge(int *A, int p, int q, int r);
+
 void insertion_sort(int *A, int n)
 {
     int i, j;
@@ -78,7 +81,7 @@ void merge_sort(int *A, int p, int r)
 
 }
 
-void merge(int *A, int p, int q, int r)
+static void merge(int *A, int p, int q, int r)
 {
     //p<=q<r
     //合并子数组A[p:q]和A[q+1:r]
@@ -165,3 +168,133 @@ void quick_sort(int *A, int n, int left, int right)
     }
 }
 
+/**< 以下为堆排序所需的函数 */
+//给定一个节点的下标i,我们很容易计算出它的父节点、左孩子和右孩子的下标。
+inline int parent_node(int number)
+{
+    return number>>1;
+}
+inline int left_child(int number)
+{
+    return number<<1;
+}
+inline int right_child(int number)
+{
+    return (number<<1)+1;
+}
+inline void exchange(int *a, int *b)
+{
+    int tmp;
+    tmp = *a;
+    *a  = *b;
+    *b  = tmp;
+}
+
+/**< 最大堆化 */
+void max_heapify(HeapStructure *A, int i)
+{
+    ///**< 其中i为第几个数，不是下标，具体值为下标加一的值。 */
+    int l = left_child(i)-1;
+    int r = right_child(i)-1;
+    i-=1;//将i变成下标。
+    int largest;
+    //将当前的值和子孩子作比较，若当前值小于子孩子的值，则将
+    //子孩子的最大值和当前值做交换
+    if(l < A->heap_size && A->data_array[l] > A->data_array[i])
+    {
+        largest = l;
+    }
+    else
+    {
+         largest = i;
+    }
+    if(r < A->heap_size && A->data_array[r] > A->data_array[largest])
+    {
+        largest = r;
+    }
+    if(largest != i)
+    {
+        exchange(&(A->data_array[i]),&(A->data_array[largest]));
+        max_heapify(A,largest+1);
+    }
+}
+
+/**< 最小堆化 */
+void min_heapify(HeapStructure *A, int i)
+{
+    ///**< 其中i为第几个数，不是下标，具体为下标加一的值。 */
+    int l = left_child(i)-1;
+    int r = right_child(i)-1;
+    i-=1;//将i变成下标。
+    int smallest;
+    if(l < A->heap_size && A->data_array[l] < A->data_array[i])
+    {
+        smallest = l;
+    }
+    else
+    {
+         smallest = i;
+    }
+    if(r < A->heap_size && A->data_array[r] < A->data_array[smallest])
+    {
+        smallest = r;
+    }
+    if(smallest != i)
+    {
+        exchange(&(A->data_array[i]),&(A->data_array[smallest]));
+        min_heapify(A,smallest+1);
+    }
+}
+
+/**< 建堆 */
+//将数组转换成最大堆。
+void build_max_heap(HeapStructure *A)
+{
+    A->heap_size = A->length;//?
+    int i;
+    int j;
+    for(i = A->length/2; i > 0; i--)
+    {
+        max_heapify(A,i);
+    }
+}
+
+void build_min_heap(HeapStructure *A)
+{
+    A->heap_size = A->length;//?
+    int i;
+    int j;
+    for(i = A->length/2; i > 0; i--)
+    {
+        min_heapify(A,i);
+    }
+}
+
+/**< 堆排序 */
+void heap_sort1(HeapStructure *A)
+{
+    //从小到大排序
+    build_max_heap(A);
+    int i;
+    for(i = A->length; i > 1; i--)
+    {
+        //建成最大堆后，数组中的最大元素总在根节点A[1]中，通过
+        //把他与A[n]进行交换，可以让该元素放到正确的位置。
+        exchange(&A->data_array[0],&A->data_array[i-1]);
+        A->heap_size = A->heap_size - 1;
+        max_heapify(A,1);
+    }
+}
+
+void heap_sort2(HeapStructure *A)
+{
+    //从大到小排序
+    build_min_heap(A);
+    int i;
+    for(i = A->length; i > 1; i--)
+    {
+        exchange(&A->data_array[0],&A->data_array[i-1]);
+        A->heap_size = A->heap_size - 1;
+        min_heapify(A,1);
+    }
+}
