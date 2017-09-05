@@ -9,23 +9,27 @@
 int main()
 {
     //int A[10] = {16,4,10,14,7,9,3,2,8,1};
-    int A[10] = {4,1,3,2,16,9,10,14,8,7};
+    //int A[10] = {4,1,3,2,16,9,10,14,8,7};
+    int A[10] = {16,14,10,8,7,9,3,2,8,1};
     //int *A;
     //A = rand_array(N);
     HeapStructure data={A,N,N};
     value_print(data.data_array, N);
     //value_print(A, N);
-    printf("\n");
+    //printf("\n");
     //printf("%d\n",data.heap_size);
     //max_heapify(&data,1);
     //build_max_heap(&data);
     //build_min_heap(&data);
     //heap_sort1(&data);
     //heap_sort2(&data);
-    quick_sort(A, N, 0, N-1);
+    //quick_sort(A, N, 0, N-1);
     //merge_sort(A, 0, N-1);
+    heap_increase_key(&data, 9, 15);
+    //build_max_heap(&data);
+    //int number = heap_extract_max(&data);
 
-    value_print(A, N);
+    value_print(A, data.heap_size);
     return 0;
 }
 

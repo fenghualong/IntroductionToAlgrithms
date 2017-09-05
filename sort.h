@@ -42,6 +42,11 @@ void build_min_heap(HeapStructure *A);
 void heap_sort1(HeapStructure *A);
 void heap_sort2(HeapStructure *A);
 
+/**< 优先队列 */
+int heap_maximum(HeapStructure A);
+int heap_extract_max(HeapStructure *A);
+void heap_increase_key(HeapStructure *A, int i, int key);
+void max_heap_insert(HeapStructure *A, int key);
 
 
 #endif // __SORT_H__

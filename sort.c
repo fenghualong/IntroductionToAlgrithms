@@ -252,7 +252,6 @@ void build_max_heap(HeapStructure *A)
 {
     A->heap_size = A->length;//?
     int i;
-    int j;
     for(i = A->length/2; i > 0; i--)
     {
         max_heapify(A,i);
@@ -263,7 +262,6 @@ void build_min_heap(HeapStructure *A)
 {
     A->heap_size = A->length;//?
     int i;
-    int j;
     for(i = A->length/2; i > 0; i--)
     {
         min_heapify(A,i);
@@ -284,6 +282,7 @@ void heap_sort1(HeapStructure *A)
         A->heap_size = A->heap_size - 1;
         max_heapify(A,1);
     }
+    A->heap_size = A->length;
 }
 
 void heap_sort2(HeapStructure *A)
@@ -297,4 +296,59 @@ void heap_sort2(HeapStructure *A)
         A->heap_size = A->heap_size - 1;
         min_heapify(A,1);
     }
+    A->heap_size = A->length;
+}
+
+/**< 优先队列 */
+int heap_maximum(HeapStructure A)
+{
+    //返回A中具有最大键字的元素。
+    return A.data_array[0];
+}
+
+int heap_extract_max(HeapStructure *A)
+{
+    //去掉并返回A中的具有最大键字的元素
+    if(A->heap_size < 1)
+    {
+        printf("heap underflow\n");
+        return -1;
+    }
+    int max = A->data_array[0];
+    A->data_array[0] = A->data_array[A->heap_size-1];
+    A->heap_size -=1;
+    max_heapify(A,1);
+    return max;
+}
+
+void heap_increase_key(HeapStructure *A, int i, int key)
+{
+    //将元素i的关键字值(即第i个元素的值)增加到key，
+    //这里假设key的值不小于i的原关键字值。
+    if(key < A->data_array[i-1])
+    {
+        printf("new key is smaller than current key");
+        return;
+    }
+    A->data_array[i-1] = key;
+    while(i > 0 && A->data_array[parent_node(i)-1] < A->data_array[i-1])
+    {
+        //exchange(&A->data_array[i-1],&A->data_array[parent_node(i)-1]);
+        A->data_array[i-1] = A->data_array[parent_node(i)-1];
+        A->data_array[parent_node(i)-1] = key;
+        i = parent_node(i);
+    }
+}
+
+void max_heap_insert(HeapStructure *A, int key)
+{
+    //把元素key插入集合A中。
+    if(A->heap_size >= A->length)
+    {
+        printf("The array is overflow");
+        return ;
+    }
+    A->heap_size +=1;
+    A->data_array[A->heap_size] = key;
+    heap_increase_key(A, A->heap_size, key);
 }
