@@ -147,7 +147,7 @@ int *rand_array(int n)
 
 }
 
-void quick_sort(int *A, int n, int left, int right)
+void quick_sort_not_the_book(int *A, int n, int left, int right)
 {
     //快速排序，n为数组元素个数，left=数组左边界，right=右边界
     int i,j,t;
@@ -163,8 +163,8 @@ void quick_sort(int *A, int n, int left, int right)
             t=A[i],A[i]=A[j],A[j]=t;//交换
         }
         t=A[left],A[left]=A[j],A[j]=t;//交换
-        quick_sort(A,n,left,j-1);//关键数据左半部分递归
-        quick_sort(A,n,j+1,right);//关键数据右半部分递归
+        quick_sort_not_the_book(A,n,left,j-1);//关键数据左半部分递归
+        quick_sort_not_the_book(A,n,j+1,right);//关键数据右半部分递归
     }
 }
 
@@ -351,4 +351,128 @@ void max_heap_insert(HeapStructure *A, int key)
     A->heap_size +=1;
     A->data_array[A->heap_size] = key;
     heap_increase_key(A, A->heap_size, key);
+}
+
+/**< 以下是快速排序的函数 */
+void quick_sort(int *A, int p, int r)
+{
+    //在数组A[p:r]中，p为第一个元素下标，r为最后一个元素下标。
+    int q;
+    if(p < r)
+    {
+        q = partition(A, p, r);
+        quick_sort(A, p, q-1);
+        quick_sort(A, q+1, r);
+    }
+}
+inline int partition(int *A, int p, int r)
+{
+    int x = A[r];
+    int i = p - 1;
+    int j;
+    for(j = p; j < r; j++)
+    {
+        if(A[j] <= x)
+        {
+            i++;
+            exchange(A+i,A+j);
+        }
+    }
+    exchange(A+i+1,A+r);
+    return i+1;
+}
+
+/**< 计数排序 */
+void counting_sort(int *A, int *B, int n, int k)
+{
+    //输入数组是A[1:n]
+    //输出数组是B[1:n]
+    //n为数组A，B的长度
+    //k为大于A,B中元素最大数的数。
+    int *C;
+    int i,j;
+    C = (int *)calloc((k+1), sizeof(int));
+    if(C == NULL)return ;
+    for(j = 0; j < n; j++)
+    {
+        //C[i] now contains the number of elements equal to i.
+        C[A[j]] = C[A[j]] + 1;
+    }
+    for(i = 1; i <= k; i++)
+    {
+        //C[i] now contains the number of elements less than or equal to i.
+        C[i] = C[i] + C[i-1];
+    }
+    for(j = n-1; j > -1; j--)
+    {
+        B[C[A[j]]-1] = A[j];//注意数组下标从0开始，而计数是从1开始
+        C[A[j]]    = C[A[j]] - 1;
+    }
+    free(C);
+}
+
+/**< 最大值和最小值 */
+int minimum(int *A, int n)
+{
+    int min = A[0];
+    int i;
+    for(i = 1; i < n; i++)
+    {
+        if(min > A[i])
+        {
+            min = A[i];
+        }
+    }
+    return min;
+}
+
+Min_Max find_min_and_max(int *A, int n)
+{
+    int min,max;
+    int i;
+    int step;
+    int m,l;
+    if(n > 1)
+    {
+        if(A[0] > A[1])//先初始min和max的值
+        {
+            min = A[1];
+            max = A[0];
+        }else
+        {
+            min = A[0];
+            max = A[1];
+        }
+        step = (n >> 1) - 1;
+        //从剩下的数中先比较一对元素，然后将该对元素的最大值和max比较，
+        //最小值和min比较
+        for(i = 1; i <= step; i++)
+        {
+            m = i << 1;//i*2
+            l = (i << 1) + 1;//i*2+1
+            if(A[m] > A[l])
+            {
+                max = max > A[m] ? max : A[m];
+                min = min < A[l] ? min : A[l];
+            }else
+            {
+                max = max > A[l] ? max : A[l];
+                min = min < A[m] ? min : A[m];
+            }
+        }
+        //如果输入数组是奇数个元素，则将max和min和最后一个值做比较；
+        if(n%2 == 1)
+        {
+            max = max > A[n-1] ? max : A[n-1];
+            min = min < A[n-1] ? min : A[n-1];
+        }
+    }else
+    {
+        max = *A;
+        min = *A;
+    }
+    Min_Max minmax;
+    minmax.max = max;
+    minmax.min = min;
+    return minmax;
 }
