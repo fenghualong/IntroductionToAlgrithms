@@ -5,55 +5,26 @@
 #include"sort.h"
 #include"BinarySearchTree.h"
 
-#define N 11
+#define N 9
 
 int main()
 {
-    //int *A;
     int i;
-    //A = rand_array(N);
-    TREE *T;
-    T = (TREE *)malloc(sizeof(TREE));
-    T->root = NULL;
-
-    BST *root = NULL;
-
-    BST *z = NULL;
-    //int A[N] = {6,5,7,2,5,8};
-    int A[11] = {15,6,18,3,7,17,20,2,4,13,9};
-
-    //for(i = 0; i < N; i++)
-    //{
-        //insert_tree(&root, A[i]);
-    //}
-
+    RB_TREE *T;
+    RB_BST  *z;
+    T = rb_init_tree();
+    int A[9] = {11,2,14,1,7,15,5,8,4};
     for(i = 0; i < N; i++)
     {
-        z = (BST *)malloc(sizeof(BST));
-        //printf("z1 = %d\n",z);
-        z->key    = A[i];
-        z->left   = NULL;
-        z->right  = NULL;
-        z->parent = NULL;
-        tree_insert(T,z);
+        z = rb_bst_node_init(T, A[i]);
+        rb_insert(T, z);
     }
-    root = T->root;
-    inorder_tree_walk(root);
-
-    BST *find;
-    find = tree_search(root,7);
-    printf("\nfind = %d\n",find->key);
-    find = iterative_tree_search(root,15);
-    printf("iterative_find = %d\n",find->key);
-    tree_delete(T, find);
-    root = T->root;
-    inorder_tree_walk(root);
-    find = tree_successor(find);
-    printf("\nsuccessor = %d\n",find->key);
-    find = tree_minimum(root);
-    printf("min = %d\n",find->key);
-    find = tree_maximum(root);
-    printf("max = %d\n",find->key);
+    rb_inorder_tree_walk(T,T->root);
+    printf("\n");
+    z = iterative_rb_tree_search(T,7);
+    printf("iterative_rb_tree_search: %d\n",z->key);
+    rb_delete(T, z);
+    rb_inorder_tree_walk(T,T->root);
     return 0;
 }
 
