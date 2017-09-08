@@ -1,19 +1,10 @@
 # depslib dependency file v1.0
-1504689949 source:f:\c_and_pointer\introductiontoalgrithms\main.c
+1504832229 source:f:\c_and_pointer\introductiontoalgrithms\binarysearchtree.c
+	"BinarySearchTree.h"
+
+1504796616 f:\c_and_pointer\introductiontoalgrithms\binarysearchtree.h
 	<stdio.h>
 	<stdlib.h>
-	"DivideAndConquer.h"
-	"sort.h"
-
-1504687685 f:\c_and_pointer\introductiontoalgrithms\sort.h
-	<stdio.h>
-	<stdlib.h>
-	<time.h>
-
-1504171098 f:\c_and_pointer\introductiontoalgrithms\constant_value.h
-
-1504689855 source:f:\c_and_pointer\introductiontoalgrithms\sort.c
-	"sort.h"
 
 1504574559 source:f:\c_and_pointer\introductiontoalgrithms\divideandconquer.c
 	"DivideAndConquer.h"
@@ -21,4 +12,19 @@
 	<stdlib.h>
 
 1504574306 f:\c_and_pointer\introductiontoalgrithms\divideandconquer.h
+
+1504831136 source:f:\c_and_pointer\introductiontoalgrithms\main.c
+	<stdio.h>
+	<stdlib.h>
+	"DivideAndConquer.h"
+	"sort.h"
+	"BinarySearchTree.h"
+
+1504687685 f:\c_and_pointer\introductiontoalgrithms\sort.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1504690569 source:f:\c_and_pointer\introductiontoalgrithms\sort.c
+	"sort.h"
 

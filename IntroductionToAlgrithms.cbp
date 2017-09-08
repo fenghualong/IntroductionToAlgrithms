@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="BinarySearchTree.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="BinarySearchTree.h" />
 		<Unit filename="DivideAndConquer.c">
 			<Option compilerVar="CC" />
 		</Unit>
