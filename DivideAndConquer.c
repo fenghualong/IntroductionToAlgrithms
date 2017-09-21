@@ -80,7 +80,7 @@ void show(int *A, int n)
     for(i = 0; i < n; i++)
     {
         for(j = 0; j < n; j++)
-            printf("%d ",A[i*n+j]);
+            printf("%d\t",A[i*n+j]);
         printf("\n");
     }
 }

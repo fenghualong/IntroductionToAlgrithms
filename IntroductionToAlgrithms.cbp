@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="DivideAndConquer.h" />
+		<Unit filename="dynamic_programming.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dynamic_programming.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
