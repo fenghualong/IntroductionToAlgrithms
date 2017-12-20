@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dynamic_programming.h" />
+		<Unit filename="greedy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="greedy.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -13,9 +13,14 @@
 
 1504574306 f:\c_and_pointer\introductiontoalgrithms\divideandconquer.h
 
-1505997697 source:f:\c_and_pointer\introductiontoalgrithms\main.c
+1506006341 source:f:\c_and_pointer\introductiontoalgrithms\main.c
 	<stdio.h>
 	<stdlib.h>
+	"DivideAndConquer.h"
+	"sort.h"
+	"BinarySearchTree.h"
+	"dynamic_programming.h"
+	"greedy.h"
 
 1504687685 f:\c_and_pointer\introductiontoalgrithms\sort.h
 	<stdio.h>
@@ -25,7 +30,7 @@
 1504690569 source:f:\c_and_pointer\introductiontoalgrithms\sort.c
 	"sort.h"
 
-1505997743 source:f:\c_and_pointer\introductiontoalgrithms\dynamic_programming.c
+1505997794 source:f:\c_and_pointer\introductiontoalgrithms\dynamic_programming.c
 	"dynamic_programming.h"
 
 1505997484 f:\c_and_pointer\introductiontoalgrithms\dynamic_programming.h
@@ -35,4 +40,58 @@
 	"sort.h"
 	"BinarySearchTree.h"
 	"dynamic_programming.h"
+
+1506006363 source:f:\c_and_pointer\introductiontoalgrithms\greedy.c
+	"greedy.h"
+	<stdio.h>
+
+1506006224 f:\c_and_pointer\introductiontoalgrithms\greedy.h
+
+1504879572 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\binarysearchtree.c
+	"BinarySearchTree.h"
+
+1504878309 f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\binarysearchtree.h
+	<stdio.h>
+	<stdlib.h>
+
+1505038772 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\divideandconquer.c
+	"DivideAndConquer.h"
+	<stdio.h>
+	<stdlib.h>
+
+1504574306 f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\divideandconquer.h
+
+1505997794 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\dynamic_programming.c
+	"dynamic_programming.h"
+
+1505997484 f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\dynamic_programming.h
+	<stdio.h>
+	<stdlib.h>
+	"DivideAndConquer.h"
+	"sort.h"
+	"BinarySearchTree.h"
+	"dynamic_programming.h"
+
+1504687685 f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\sort.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1511362359 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\sort.c
+	"sort.h"
+
+1506093227 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\greedy.c
+	"greedy.h"
+	<stdio.h>
+
+1506093215 f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\greedy.h
+
+1511362406 source:f:\·â»¯Áú\c_and_pointer\introductiontoalgrithms\main.c
+	<stdio.h>
+	<stdlib.h>
+	"DivideAndConquer.h"
+	"sort.h"
+	"BinarySearchTree.h"
+	"dynamic_programming.h"
+	"greedy.h"
 

@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//#include"DivideAndConquer.h"
-//#include"sort.h"
-//#include"BinarySearchTree.h"
-//#include"dynamic_programming.h"
+#include"DivideAndConquer.h"
+#include"sort.h"
+#include"BinarySearchTree.h"
+#include"dynamic_programming.h"
+#include"greedy.h"
 
-#define N 16
+#define N 12
 
 int *rightup = "¨I";
 int *right = "¡ü";
@@ -15,34 +16,17 @@ int *up = "¡û";
 int main()
 {
 
-//int pp[7] = {30,35,15,5,10,20,25};
-    //int pp[7] = {5,10,3,12,5,50,6};
-    //matrix_chain_order(pp, 7);
-    //printf("\n");
+    int s[N] = {0,1,3,0,5,3,5,6,8,8,2,12};
+    int f[N] = {0,4,5,6,7,9,9,10,11,12,14,16};
 
-    //memoized_matrix_chain(pp, 7);
-    //printf("\n");
+    int am[N] = {0};
+    recursive_activity_selector(s,f,am,0,N);
+    print_activity_select_result(am,N);
+    greedy_activity_selector(s, f, am, N);
+    print_activity_select_result(am,N);
 
-    int x[7] = {1,2,3,2,4,1,2};
-    int y[6] = {2,4,3,1,2,1};
-
-    //int *rightup = "¨I";
-    //int *right = "¡ü";
-    //int *up = "¡û";
-
-    lcs_length(x, 7, y, 6);//, rightup, right, up);
-
-    //print_lcs()
-
-    //int *p;
-    //p = "¨I¡ü¡û¨I¡ü¡ú¨J¨K¡ý¨L";
-    //printf("%s\n","¨I¡ü¡û¨I¡ü¡ú¨J¨K¡ý¨L");
-    //printf("%s\n",p);
-
-    //printf("%s\n",rightup);
-
-    //printf("%s\n",right);
-
-    //printf("%s\n",up);
+    value_print(s, 12);
+    quick_sort_not_the_book(s, 12, 0, 11);
+    value_print(s, 12);
     return 0;
 }

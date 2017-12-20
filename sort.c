@@ -159,7 +159,10 @@ void quick_sort_not_the_book(int *A, int n, int left, int right)
         {
             while(i+1<n && A[++i]<A[left]);//ÏòºóËÑË÷£¬<ÉýÐò,>½µÐò
             while(j-1>-1 && A[--j]>A[left]);//ÏòÇ°ËÑË÷£¬<ÉýÐò,>½µÐò
-            if(i>=j)break;
+            if(i>=j)
+            {
+                break;
+            }
             t=A[i],A[i]=A[j],A[j]=t;//½»»»
         }
         t=A[left],A[left]=A[j],A[j]=t;//½»»»
